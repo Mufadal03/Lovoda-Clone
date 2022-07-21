@@ -1,11 +1,9 @@
-import { Box, Button, Divider, Flex, Grid, GridItem, Heading, Image, Input, Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent, PopoverFooter, PopoverHeader, PopoverTrigger, Select, Spacer, Spinner, Text } from "@chakra-ui/react"
+import { ChevronDownIcon } from "@chakra-ui/icons"
+import { Box, Button, Divider, Flex, Grid, GridItem, Heading, Image, Input, Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent, PopoverFooter, PopoverHeader, PopoverTrigger, Select, Spinner, Text } from "@chakra-ui/react"
 import { useEffect,useState } from "react"
 import { Link, useSearchParams } from "react-router-dom"
-import { useRef } from "react"
-import { Pagination } from "../../common/Pagination"
-import {ChevronDownIcon} from "@chakra-ui/icons"
-export const Necklaces = () => {
-    const ref = useRef()
+import { Pagination } from "../../../common/Pagination"
+export const Earrings = () => {
     const [data, setData] = useState([])
     const [isLoading,setLoading] = useState(false)
     const [searchParam,setSearchParam]=useSearchParams()
@@ -16,10 +14,11 @@ export const Necklaces = () => {
     const [less,setLess] = useState(50)
     useEffect(() => {
         setLoading(true)
-        fetch(`https://muffi-server.herokuapp.com/necklaces?_page=${page}&_limit=16&_sort=${sort}&_order=${order}&price_gte=${greater}&price_lte=${less}`)
+        fetch(`https://muffi-server.herokuapp.com/earrings?_page=${page}&_limit=16&_sort=${sort}&_order=${order}&price_gte=${greater}&price_lte=${less}`)
             .then((res) => res.json())
             .then((res)=>{
                 // console.log(res)
+
                 setData(res)
                 setLoading(false)
         })
@@ -30,22 +29,21 @@ export const Necklaces = () => {
     });
     }, [page]);
     const handlePage = () => {
-        page == 1 ? setPage(2) : setPage(1)
-            ref.current.scrollTop = 0;
+        page==1?setPage(2):setPage(1)
     }
-     const handleChange = (e) => {
+    const handleChange = (e) => {
         // console.log(e.target.value)
-        if (e.target.value == "name_ASC") {
+        if (e.target.value === "name_ASC") {
             
             setSort("name")
             setOrder("ASC")
         }
-        else if (e.target.value == "name_DESC")
+        else if (e.target.value === "name_DESC")
         {
             setSort("name")
             setOrder("DESC")
         }
-        else if (e.target.value == "price_ASC")
+        else if (e.target.value === "price_ASC")
         {
             setSort("price")
             setOrder("ASC")
@@ -62,9 +60,9 @@ export const Necklaces = () => {
     }
     return (
         <Box w="80%" m="auto">
-            <Heading my="1rem" fontWeight={"400"} fontSize={"4xl"}>Necklaces</Heading>
-            {/* //sorting functionality */}
-            <Flex my="1.5rem">
+            <Heading my="1rem" fontWeight={"400"} fontSize={"4xl"}>Earrings</Heading>
+            {/* Sorting Starts */}
+            <Flex my="1.5rem"  fontSize={"sm"} >
                 <Flex  w="50%" alignItems={"center"} ml="1rem">
                     <Text mr="1rem">Filter :</Text>
                     <Popover>
@@ -84,33 +82,32 @@ export const Necklaces = () => {
                         <Input onChange={(e)=>setLess(e.target.value)} w="30%"/>
                         </Flex>
                         </PopoverBody>
-                        
                     </PopoverContent>
                     </Popover>
                 </Flex>
                     <Flex  w="50%" alignItems={"center"} justifyContent="flex-end">
                     <Text mr="1rem">Sort By:</Text>
-                    <Select w="40%" onChange={handleChange}>
-                        <option value="">Sr No</option>
-                        <option value="name_ASC">Alphabetically A-Z</option>
+                    <Select w="40%" onChange={handleChange} >
+                        <option  value="">Sr No</option>
+                        <option  value="name_ASC">Alphabetically A-Z</option>
                         <option value="name_DESC">Alphabetically Z-A</option>
-                        <option value="price_ASC">Price Low to High</option>
-                        <option value="price_DESC">Price High to Low</option>
+                        <option  value = "price_ASC">Price Low to High</option>
+                        <option  value = "price_DESC">Price High to Low</option>
                     </Select>
                 </Flex>
             </Flex>
-            {/* //sort ends */}
-            <Box mb="2" ref={ref} fontSize="sm">
+            {/* Products */}
+            <Box mb="2" fontSize={"sm"}>
                 {isLoading && <Flex justify={"center"}><Spinner thickness='4px' speed='0.65s' emptyColor='gray.200' color='blue.500'size='xl'/></Flex>}
-                <Grid  gridTemplateColumns={"repeat(4,1fr)"} gridTemplateRows="auto" gap="0.5rem">
+                <Grid gridTemplateColumns={"repeat(4,1fr)"} gridTemplateRows="auto" gap="0.5rem">
                     {
                         data?.map((item) => (
-                             <GridItem  key={item.id}>
+                             <GridItem key={item.id}>
                             <Box >
-                                <Image  src={item.poster} />
+                                <Image  src={item.poster} />    
                                 <Box py="2">
-                                <Link to={`/necklaces/${item.id}`}><Text>{item.name}</Text></Link>
-                                <Text color="gray.600">${ item.price}</Text>
+                                <Link to={`/earrings/${item.id}`}><Text>{item.name}</Text></Link>
+                                <Text color="gray.600">$ { item.price}</Text>
                                 </Box>
                             </Box>
                         </GridItem>
@@ -118,8 +115,7 @@ export const Necklaces = () => {
                     }
                 </Grid>
             </Box>
-            <Divider orientation="horizontal" />
-            {data &&<Pagination handlePage={handlePage} page={page} />}
+            <Pagination handlePage={handlePage} page={page} />
         </Box>
     )
 }

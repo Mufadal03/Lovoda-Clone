@@ -22,19 +22,19 @@ export const Navbar = () => {
                     <Image   src="https://cdn.shopify.com/s/files/1/0627/7388/7215/files/04122019_logo2_90x.png?v=1645644264" alt="BrandLogo" />
                 </Flex>
                 <HStack ml="2rem" gap="1.5rem"  flexGrow={3}>
-                    <NavLink to="/"><Text  fontSize="sm" >Home</Text></NavLink>
-                    <NavLink to="/new"><Text fontSize="sm">New</Text></NavLink>
-                    <NavLink to="/shopall"><Text fontSize="sm" >Shop All</Text></NavLink>
-                    <NavLink to="/earrings"><Text fontSize="sm" >Earrings</Text></NavLink>
-                    <NavLink to="/necklaces"><Text fontSize="sm" >Necklaces</Text></NavLink>
-                    <NavLink to="/bracelets"><Text fontSize="sm" >Braclets</Text></NavLink>
-                    <NavLink to="/rings"><Text fontSize="sm" >Rings</Text></NavLink>
-                    <NavLink to="/shopSocial"><Text fontSize="sm" >Shop Social</Text></NavLink>
+                    <NavLink style={({ isActive }) => (isActive ? Active : base)} to="/"><Text  fontSize="sm" >Home</Text></NavLink>
+                    <NavLink style={({ isActive }) => (isActive ? Active : base)}  to="/new"><Text fontSize="sm">New</Text></NavLink>
+                    <NavLink style={({ isActive }) => (isActive ? Active : base)} to="/shopall"><Text fontSize="sm" >Shop All</Text></NavLink>
+                    <NavLink style={({ isActive }) => (isActive ? Active : base)} to="/earrings"><Text fontSize="sm" >Earrings</Text></NavLink>
+                    <NavLink  style={({ isActive }) => (isActive ? Active : base)}to="/necklaces"><Text fontSize="sm" >Necklaces</Text></NavLink>
+                    <NavLink style={({ isActive }) => (isActive ? Active : base)} to="/bracelets"><Text fontSize="sm" >Braclets</Text></NavLink>
+                    <NavLink style={({ isActive }) => (isActive ? Active : base)} to="/rings"><Text fontSize="sm" >Rings</Text></NavLink>
+                    <NavLink style={({ isActive }) => (isActive ? Active : base)} to="/shopSocial"><Text fontSize="sm" >Shop Social</Text></NavLink>
                 </HStack>
                 <HStack gap="1rem" flexGrow={0.5}>
                     <NavLink to="/"><Icon h={6} w={6}as={ HiOutlineSearch} /></NavLink>
-                    <NavLink to="/login"><Icon h={6} w={5} as={FaRegUser} /></NavLink>
-                    <NavLink to="/"><Icon h={6} w={5} as={BsHandbag} /></NavLink>
+                    <NavLink to="/signup"><Icon h={6} w={5} as={FaRegUser} /></NavLink>
+                    <NavLink to="/cart"><Icon h={6} w={5} as={BsHandbag} /></NavLink>
 
                 </HStack>
             </Flex>
