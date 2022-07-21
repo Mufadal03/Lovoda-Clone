@@ -1,9 +1,11 @@
-import { ChevronDownIcon } from "@chakra-ui/icons"
-import { Box, Button, Divider, Flex, Grid, GridItem, Heading, Image, Input, Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent, PopoverFooter, PopoverHeader, PopoverTrigger, Select, Spinner, Text } from "@chakra-ui/react"
+import { Box, Button, Divider, Flex, Grid, GridItem, Heading, Image, Input, Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent, PopoverFooter, PopoverHeader, PopoverTrigger, Select, Spacer, Spinner, Text } from "@chakra-ui/react"
 import { useEffect,useState } from "react"
 import { Link, useSearchParams } from "react-router-dom"
-import { Pagination } from "../../common/Pagination"
-export const Bracelets = () => {
+import { useRef } from "react"
+import { Pagination } from "../../../common/Pagination"
+import {ChevronDownIcon} from "@chakra-ui/icons"
+export const Necklaces = () => {
+    const ref = useRef()
     const [data, setData] = useState([])
     const [isLoading,setLoading] = useState(false)
     const [searchParam,setSearchParam]=useSearchParams()
@@ -14,39 +16,41 @@ export const Bracelets = () => {
     const [less,setLess] = useState(50)
     useEffect(() => {
         setLoading(true)
-        fetch(`https://muffi-server.herokuapp.com/bracelets?_page=${page}&_limit=16&_sort=${sort}&_order=${order}&price_gte=${greater}&price_lte=${less}`)
+        fetch(`https://muffi-server.herokuapp.com/necklaces?_page=${page}&_limit=16&_sort=${sort}&_order=${order}&price_gte=${greater}&price_lte=${less}`)
             .then((res) => res.json())
             .then((res)=>{
+                // console.log(res)
                 setData(res)
-            setLoading(false)
+                setLoading(false)
         })
-    }, [page,sort,order,less,greater])
+    }, [page,sort,order,greater,less])
     useEffect(() => {
     setSearchParam({
       page,
     });
     }, [page]);
     const handlePage = () => {
-        page==1?setPage(2):setPage(1)
+        page == 1 ? setPage(2) : setPage(1)
+            ref.current.scrollTop = 0;
     }
      const handleChange = (e) => {
         // console.log(e.target.value)
-        if (e.target.value == "name_ASC") {
+        if (e.target.value === "name_ASC") {
             
             setSort("name")
             setOrder("ASC")
         }
-        else if (e.target.value == "name_DESC")
+        else if (e.target.value === "name_DESC")
         {
             setSort("name")
             setOrder("DESC")
         }
-        else if (e.target.value == "price_ASC")
+        else if (e.target.value === "price_ASC")
         {
             setSort("price")
             setOrder("ASC")
         }
-        else if (e.target.value == "price_DESC")
+        else if (e.target.value === "price_DESC")
         {
             setSort("price")
             setOrder("DESC")
@@ -58,8 +62,9 @@ export const Bracelets = () => {
     }
     return (
         <Box w="80%" m="auto">
-            <Heading my="1rem" fontWeight={"400"} fontSize={"4xl"}>Bracelets</Heading>
-            <Flex my="1.5rem" fontSize={"sm"}>
+            <Heading my="1rem" fontWeight={"400"} fontSize={"4xl"}>Necklaces</Heading>
+            {/* //sorting functionality */}
+            <Flex my="1.5rem">
                 <Flex  w="50%" alignItems={"center"} ml="1rem">
                     <Text mr="1rem">Filter :</Text>
                     <Popover>
@@ -79,6 +84,7 @@ export const Bracelets = () => {
                         <Input onChange={(e)=>setLess(e.target.value)} w="30%"/>
                         </Flex>
                         </PopoverBody>
+                        
                     </PopoverContent>
                     </Popover>
                 </Flex>
@@ -93,17 +99,18 @@ export const Bracelets = () => {
                     </Select>
                 </Flex>
             </Flex>
-            <Box mb="2" fontSize={"sm"}>
+            {/* //sort ends */}
+            <Box mb="2" ref={ref} fontSize="sm">
                 {isLoading && <Flex justify={"center"}><Spinner thickness='4px' speed='0.65s' emptyColor='gray.200' color='blue.500'size='xl'/></Flex>}
-                <Grid gridTemplateColumns={"repeat(4,1fr)"} gridTemplateRows="auto" gap="0.5rem">
+                <Grid  gridTemplateColumns={"repeat(4,1fr)"} gridTemplateRows="auto" gap="0.5rem">
                     {
                         data?.map((item) => (
-                             <GridItem key={item.id}>
+                             <GridItem  key={item.id}>
                             <Box >
                                 <Image  src={item.poster} />
                                 <Box py="2">
-                                <Link to={`/bracelets/${item.id}`}><Text>{item.name}</Text></Link>
-                                <Text color="gray.600">$ { item.price}</Text>
+                                <Link to={`/necklaces/${item.id}`}><Text>{item.name}</Text></Link>
+                                <Text color="gray.600">${ item.price}</Text>
                                 </Box>
                             </Box>
                         </GridItem>
@@ -112,7 +119,7 @@ export const Bracelets = () => {
                 </Grid>
             </Box>
             <Divider orientation="horizontal" />
-            <Pagination handlePage={handlePage} page={page} />
+            {data &&<Pagination handlePage={handlePage} page={page} />}
         </Box>
     )
 }
