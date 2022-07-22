@@ -10,6 +10,9 @@ import { DetailedBracelets } from "../Pages/productPage/Bracelets/DetailedBracel
 import { DetailedNecklaces } from "../Pages/productPage/Necklaces/DetailedNecklaces"
 import { DetailedEarrings } from "../Pages/productPage/Earrings/DetailedEarrings"
 import { Cart } from "../Pages/cartPage/cartPage"
+import { Checkout } from "../Pages/checkout/Information/checkout"
+import { Shipping } from "../Pages/checkout/Shipping/Shipping"
+import { Payment } from "../Pages/checkout/Payment/Payment"
 export const AllRoutes = () => {
     return (
         <div>
@@ -21,6 +24,9 @@ export const AllRoutes = () => {
                 <Route path="/signup" element={<Layout><SignUp /></Layout>} />
                 <Route path="/login" element={<Layout><Login /></Layout>} />
                 <Route path="/cart" element={<Layout><Cart /></Layout>} />
+                <Route path="/checkout/info" element={<Checkout />} />
+                <Route path="/checkout/shipping" element={<Shipping />} />
+                <Route path ="/checkout/payment" element={<Payment />} />
                 <Route path="/earrings/:earrings_id" element={<Layout><DetailedEarrings /></Layout>} />
                 <Route path="/necklaces/:necklaces_id" element={<Layout><DetailedNecklaces /></Layout>} />
                 <Route path="/bracelets/:bracelets_id" element={<Layout><DetailedBracelets/></Layout>} />
