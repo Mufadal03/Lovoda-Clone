@@ -1,13 +1,14 @@
 import { Box, Button, Circle, Divider, Flex, Heading, Image, Input, Spacer, Text } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 
-export const SideBar = ({shipping,show}) => {
+export const SideBar = ({show}) => {
     const [data, setData] = useState()
     const [total, setTotal] = useState()
+    const [cart, setCartData] = useState()
+    const [len,setLen] = useState()
     const [discount,setDiscount] = useState(0)
     const [coupon,setCoupon] = useState("")
     // const [shipping,setShipping] = useState("")
-    console.log(shipping)
      const Total = (calc) => {
             let my = calc?.reduce((acc,item) => {
                return acc+item.price*item.quantity
@@ -30,6 +31,16 @@ export const SideBar = ({shipping,show}) => {
             setDiscount(10)
         }
     }
+      useEffect(() => {
+        // DeleteCart()call to delete tested example
+        fetch("https://muffi-server.herokuapp.com/cartInfo")  
+            .then((res) => res.json())
+            .then((res) => {
+                console.log(res)
+                setLen(res.length-1)
+                setCartData(res)
+        })
+    }, [])
     return (
         <Box >
             <Flex mb="1rem" gap="0.5rem" direction={"column"}> 
@@ -63,14 +74,14 @@ export const SideBar = ({shipping,show}) => {
                 <Flex>
                     <Text>Shipping</Text>
                     <Spacer />
-                    <Text>{shipping==undefined?<Text>Calculated on the next page</Text>:"$"+shipping }</Text>
+                    <Text>{cart?cart[len].fare:"Loading...." }</Text>
                 </Flex>
 
             <Divider orientation="horizontal" />
                 <Flex mt="1rem">
                     <Heading fontSize={"2xl"} fontWeight="lg">total</Heading>
                     <Spacer />
-                    <Heading fontSize={"2xl"} fontWeight="lg">${shipping==undefined?total:total+shipping-discount }</Heading>
+                    <Heading fontSize={"2xl"} fontWeight="lg">${cart?total+Number(cart[len].fare)-discount:total }</Heading>
                 </Flex>
             </Flex>
             

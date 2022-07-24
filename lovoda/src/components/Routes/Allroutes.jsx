@@ -14,11 +14,13 @@ import { Checkout } from "../Pages/checkout/Information/checkout"
 import { Shipping } from "../Pages/checkout/Shipping/Shipping"
 import { Payment } from "../Pages/checkout/Payment/Payment"
 import { DetailedHome } from "../Pages/productPage/Home/DetailedHome"
+import { Success } from "../Pages/checkout/Payment/success"
 export const AllRoutes = () => {
     return (
         <div>
             <Routes>
                 <Route path="/" element={<Layout><Homepage /></Layout>} />
+                <Route path="/success" element={<Success />} />
                 <Route path="/earrings" element={<Layout ><Earrings /></Layout>} />
                 <Route path="/necklaces" element={<Layout><Necklaces /></Layout>} />
                 <Route path="/bracelets" element={<Layout><Bracelets /></Layout>} />

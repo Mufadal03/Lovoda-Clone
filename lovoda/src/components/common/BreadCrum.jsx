@@ -9,14 +9,14 @@ export const BreadCrum = () => {
                 </BreadcrumbItem>
 
                 <BreadcrumbItem>
-                    <BreadcrumbLink href='/info'>Information</BreadcrumbLink>
+                    <BreadcrumbLink href='/checkout/info'>Information</BreadcrumbLink>
                 </BreadcrumbItem>
 
                 <BreadcrumbItem isCurrentPage>
-                    <BreadcrumbLink href='#'>Shipping</BreadcrumbLink>
+                    <BreadcrumbLink href='/checkout/shipping'>Shipping</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem >
-                    <BreadcrumbLink href='#'>Payment</BreadcrumbLink>
+                    <BreadcrumbLink href='/checkout/payment'>Payment</BreadcrumbLink>
                 </BreadcrumbItem>
         </Breadcrumb>
     )

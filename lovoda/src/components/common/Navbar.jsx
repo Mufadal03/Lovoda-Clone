@@ -23,13 +23,13 @@ export const Navbar = () => {
                 </Flex>
                 <HStack ml="2rem" gap="1.5rem"  flexGrow={3}>
                     <NavLink style={({ isActive }) => (isActive ? Active : base)} to="/"><Text  fontSize="sm" >Home</Text></NavLink>
-                    <NavLink style={({ isActive }) => (isActive ? Active : base)}  to="/new"><Text fontSize="sm">New</Text></NavLink>
-                    <NavLink style={({ isActive }) => (isActive ? Active : base)} to="/shopall"><Text fontSize="sm" >Shop All</Text></NavLink>
+                    <NavLink   to="/earrings"><Text fontSize="sm">New</Text></NavLink>
+                    <NavLink  to="/bracelets"><Text fontSize="sm" >Shop All</Text></NavLink>
                     <NavLink style={({ isActive }) => (isActive ? Active : base)} to="/earrings"><Text fontSize="sm" >Earrings</Text></NavLink>
                     <NavLink  style={({ isActive }) => (isActive ? Active : base)}to="/necklaces"><Text fontSize="sm" >Necklaces</Text></NavLink>
                     <NavLink style={({ isActive }) => (isActive ? Active : base)} to="/bracelets"><Text fontSize="sm" >Braclets</Text></NavLink>
-                    <NavLink style={({ isActive }) => (isActive ? Active : base)} to="/rings"><Text fontSize="sm" >Rings</Text></NavLink>
-                    <NavLink style={({ isActive }) => (isActive ? Active : base)} to="/shopSocial"><Text fontSize="sm" >Shop Social</Text></NavLink>
+                    <NavLink  to="/necklaces"><Text fontSize="sm" >Rings</Text></NavLink>
+                    <NavLink  to="/shopSocial"><Text fontSize="sm" >Shop Social</Text></NavLink>
                 </HStack>
                 <HStack gap="1rem" flexGrow={0.5}>
                     <NavLink to="/"><Icon h={6} w={6}as={ HiOutlineSearch} /></NavLink>
