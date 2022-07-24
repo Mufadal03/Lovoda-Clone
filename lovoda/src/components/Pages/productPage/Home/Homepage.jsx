@@ -26,7 +26,7 @@ export const Homepage = () => {
             <Box h="85vh" 
                 bgImage="url('https://cdn.shopify.com/s/files/1/0627/7388/7215/files/13122-2_2000x.jpg?v=1645120932')" bgPosition="center" filter='auto' >
                 <VStack>
-                    <Heading color="white" > NEW NEW NEW</Heading>
+                    <Heading color="white" ></Heading>
                 </VStack>
             </Box>
             <Box w="75%" m="auto" mt="5rem">

@@ -31,7 +31,7 @@ export const Shipping = () => {
                 setLen(res.length)
                 setData(res)
         })
-    }, [])
+    }, [load])
     const handleSubmit = () => {
         fetch(`https://muffi-server.herokuapp.com/cartInfo/${len}`, {
             method: "PATCH",

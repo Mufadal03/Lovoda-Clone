@@ -4,7 +4,7 @@ export const Footer = () => {
     return (
         <Box>
             <Divider orientation="horizontal" />
-            <Box border="2px solid red" w="80%" m="3rem auto" p="1rem">
+            <Box  w="80%" m="3rem auto" p="1rem">
                 <Flex >
                     <Flex  justifyContent={"space-evenly"} direction={"column"} textAlign={"left"} w="50%">
                         <Text fontWeight={"500"} fontSize="lg" >Info</Text>
@@ -43,7 +43,6 @@ export const Footer = () => {
                 </Flex>
             </Box>
             <Divider  m="auto" orientation="horizontal" />
-            <Box mt="2rem" h="20vh" border={"2px solid red"}>logo</Box>
         </Box>
     )
 }

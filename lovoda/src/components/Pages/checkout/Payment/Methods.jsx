@@ -25,11 +25,11 @@ export const Method = () => {
                     </AccordionButton>
                     <AccordionPanel pb={4}>
                         <Flex direction={"column"} gap="1rem">
-                            <Input placeholder="Card number" type="number" />
-                            <Input placeholder="Name on card" type="number" />
+                            <Input placeholder="Card number" type="number" required/>
+                            <Input placeholder="Name on card" type="number" required/>
                             <Flex justifyContent={"space-between"}>
-                                <Input placeholder="Expiration date ( MM / YY )" w="47%" />
-                                <Input placeholder="Security Code " w="47%" />
+                                <Input placeholder="Expiration date ( MM / YY )" w="47%" required/>
+                                <Input placeholder="Security Code " w="47%" required    />
 
                             </Flex>
                         </Flex>
