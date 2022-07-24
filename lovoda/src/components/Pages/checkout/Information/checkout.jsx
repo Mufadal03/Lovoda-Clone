@@ -6,7 +6,7 @@ import { Info } from "./Info"
 import { SideBar } from "../Sidebar"
 
 export const Checkout = () => {
-   
+   document.title="Checkout"
     return (
         <Box w="73%" m="4rem auto" >
             <Flex>

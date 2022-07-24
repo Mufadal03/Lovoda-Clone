@@ -1,8 +1,10 @@
-import { Box, Button, Grid, GridItem, Heading, Image, Link, SimpleGrid, Spinner, Text } from "@chakra-ui/react"
+import { Box, Button, Grid, GridItem, Heading, Image, Link, SimpleGrid, Spinner, Text, VStack } from "@chakra-ui/react"
 import { useEffect } from "react"
 import { useState } from "react"
+import { Card } from "../../../common/Card"
 
 export const Homepage = () => {
+    document.title="Lovoda"
     const [homeData, setHomeData] = useState()
     const [isLoading,setLoading] = useState(false)
     useEffect(() => {
@@ -21,8 +23,11 @@ export const Homepage = () => {
 
     return (
         <>
-            <Box h="80vh" 
-                bgImage="url('https://cdn.shopify.com/s/files/1/0627/7388/7215/files/13122-2_2000x.jpg?v=1645120932')" bgPosition="center">
+            <Box h="85vh" 
+                bgImage="url('https://cdn.shopify.com/s/files/1/0627/7388/7215/files/13122-2_2000x.jpg?v=1645120932')" bgPosition="center" filter='auto' >
+                <VStack>
+                    <Heading color="white" > NEW NEW NEW</Heading>
+                </VStack>
             </Box>
             <Box w="75%" m="auto" mt="5rem">
                 {isLoading && <Box display={"flex"} justifyContent="center">
@@ -38,13 +43,7 @@ export const Homepage = () => {
                 {
                     homeData?.map((item) => (
                         <GridItem>
-                            <Box key={item.id}>
-                                <Image  src={item.poster} />
-                                <Box py="2">
-                                <Text>{item.name}</Text>
-                                <Text>$ { item.price}</Text>
-                                </Box>
-                            </Box>
+                             <Card hover={item.hover_poster} poster={item.poster} name={item.name} price={item.price} id={item.id} prod="homepage" />
                         </GridItem>
                     ))
                 }
@@ -68,7 +67,7 @@ export const Homepage = () => {
                         <GridItem area={"nine"} > <Box><Image src="https://storage.covet.pics/postassets/11925590/high_resolution/d2c4ba857a82b6a2fb7740b860ecea37" /></Box>   </GridItem>
                         </Grid>
                     </Box>
-                        <Text my="1.5rem" textAlign="center"><Link>MORE</Link></Text>
+                        <Link to="/login"><Text my="1.5rem" textAlign="center">MORE</Text></Link>
                 </Box>
            </Box>
         </>

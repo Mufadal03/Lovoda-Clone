@@ -2,6 +2,7 @@ import { ChevronDownIcon } from "@chakra-ui/icons"
 import { Box, Button, Divider, Flex, Grid, GridItem, Heading, Image, Input, Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent, PopoverFooter, PopoverHeader, PopoverTrigger, Select, Spinner, Text } from "@chakra-ui/react"
 import { useEffect,useState } from "react"
 import { Link, useSearchParams } from "react-router-dom"
+import { Card } from "../../../common/Card"
 import { Pagination } from "../../../common/Pagination"
 export const Bracelets = () => {
     const [data, setData] = useState([])
@@ -99,13 +100,16 @@ export const Bracelets = () => {
                     {
                         data?.map((item) => (
                              <GridItem key={item.id}>
-                            <Box >
-                                <Image  src={item.poster} />
+                            {/* <Box >
+                                    <Box border="2px solid red">
+                                        <Image  src={item.poster} />
+                                </Box>
                                 <Box py="2">
                                 <Link to={`/bracelets/${item.id}`}><Text>{item.name}</Text></Link>
                                 <Text color="gray.600">$ { item.price}</Text>
                                 </Box>
-                            </Box>
+                            </Box> */}
+                                <Card hover={item.hover_poster} poster={item.poster} name={item.name} price={item.price} id={item.id} prod="bracelets"/>
                         </GridItem>
                         ))
                     }

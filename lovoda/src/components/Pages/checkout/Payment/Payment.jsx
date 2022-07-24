@@ -1,4 +1,6 @@
 import { Box, Button, Divider, Flex, Heading, Image, Spacer, Text } from "@chakra-ui/react"
+import { useEffect } from "react"
+import { useState } from "react"
 import { Link } from "react-router-dom"
 import { BreadCrum } from "../../../common/BreadCrum"
 import { SideBar } from "../Sidebar"
@@ -6,6 +8,19 @@ import { BillingAddress } from "./BillingAddress"
 import { Method } from "./Methods"
 
 export const Payment = () => {
+    const [shipping, setShipping] = useState(0)
+    const [data, setData] = useState()
+    const [len , setLen] = useState()
+    const show = true
+    useEffect(() => {
+        fetch("https://muffi-server.herokuapp.com/cartInfo")   
+            .then((res) => res.json())
+            .then((res) => {
+                setData(res)
+                setShipping(res.fare)
+                setLen(res.length-1)
+        })
+    },[])
     return (
         <Box w="73%" m="4rem auto" >
             <Flex>
@@ -22,20 +37,20 @@ export const Payment = () => {
                             <Divider orientation="horizontal" />
                             <Flex gap="1.5rem" my="0.5rem">
                                 <Text fontWeight={"200"}>Contact</Text>
-                                <Text flexGrow="2"  fontSize={"md"} fontWeight="400">Entered Contact on info page</Text>
+                                <Text flexGrow="2" fontSize={"md"} fontWeight="400">{data?data[len].email:"Loading...."}</Text>
                                 <Link to="/checkout/info"><Text color="blue"  fontSize={"sm"}>Change</Text></Link>
                             </Flex>
                             <Divider orientation="horizontal" />
                             <Flex gap="1.5rem" my="0.5rem">
                                 <Text fontWeight={"200"}>Ship to</Text>
-                                <Text flexGrow="2" fontSize={"md"} fontWeight="400">Entered add on info page</Text>
+                                <Text flexGrow="2" fontSize={"md"} fontWeight="400">{data?data[len].add:"Loading..."}</Text>
                                 <Link to="/checkout/info"><Text color="blue" fontSize={"sm"}>Change</Text></Link>
                             </Flex>
                             <Divider orientation="horizontal" />
                             <Flex gap="1.5rem" my="0.5rem">
                                 <Text fontWeight={"200"}>Method</Text>
-                                <Text flexGrow="2" fontSize={"md"} fontWeight="400">Entered method on shipment page</Text>
-                                <Link to="/checkout/shipment"><Text color="blue" fontSize={"sm"}>Change</Text></Link>
+                                <Text flexGrow="2" fontSize={"md"} fontWeight="400">{data?data[len].method:"Loading...." }</Text>
+                                <Link to="/checkout/shipping"><Text color="blue" fontSize={"sm"}>Change</Text></Link>
                             </Flex>
                             <Divider orientation="horizontal" />
 
@@ -55,7 +70,7 @@ export const Payment = () => {
                 
                </Box>
                 <Box w="40%">
-                    <SideBar />
+                    <SideBar shipping={shipping} show={show} />
                 </Box>
 
             </Flex>
