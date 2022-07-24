@@ -4,6 +4,7 @@ import { Link, useSearchParams } from "react-router-dom"
 import { useRef } from "react"
 import { Pagination } from "../../../common/Pagination"
 import {ChevronDownIcon} from "@chakra-ui/icons"
+import { Card } from "../../../common/Card"
 export const Necklaces = () => {
     const ref = useRef()
     const [data, setData] = useState([])
@@ -106,13 +107,7 @@ export const Necklaces = () => {
                     {
                         data?.map((item) => (
                              <GridItem  key={item.id}>
-                            <Box >
-                                <Image  src={item.poster} />
-                                <Box py="2">
-                                <Link to={`/necklaces/${item.id}`}><Text>{item.name}</Text></Link>
-                                <Text color="gray.600">${ item.price}</Text>
-                                </Box>
-                            </Box>
+                             <Card hover={item.hover_poster} poster={item.poster} name={item.name} price={item.price} id={item.id} prod="necklaces" />
                         </GridItem>
                         ))
                     }

@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router"
 import { Layout } from "../Layout/Layout"
 import { Bracelets } from "../Pages/productPage/Bracelets/Bracelets"
 import { Earrings } from "../Pages/productPage/Earrings/Earrings"
-import { Homepage } from "../Pages/Homepage"
+import { Homepage } from "../Pages/productPage/Home/Homepage"
 import { Necklaces } from "../Pages/productPage/Necklaces/Necklaces"
 import { SignUp } from "../Pages/LoginSignUp/SignUp"
 import { Login } from "../Pages/LoginSignUp/Login"
@@ -13,6 +13,7 @@ import { Cart } from "../Pages/cartPage/cartPage"
 import { Checkout } from "../Pages/checkout/Information/checkout"
 import { Shipping } from "../Pages/checkout/Shipping/Shipping"
 import { Payment } from "../Pages/checkout/Payment/Payment"
+import { DetailedHome } from "../Pages/productPage/Home/DetailedHome"
 export const AllRoutes = () => {
     return (
         <div>
@@ -29,6 +30,7 @@ export const AllRoutes = () => {
                 <Route path ="/checkout/payment" element={<Payment />} />
                 <Route path="/earrings/:earrings_id" element={<Layout><DetailedEarrings /></Layout>} />
                 <Route path="/necklaces/:necklaces_id" element={<Layout><DetailedNecklaces /></Layout>} />
+                <Route path="/homepage/:homepage_id" element={<Layout><DetailedHome /></Layout>} />
                 <Route path="/bracelets/:bracelets_id" element={<Layout><DetailedBracelets/></Layout>} />
             </Routes>
         </div>

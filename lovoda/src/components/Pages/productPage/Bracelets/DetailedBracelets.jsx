@@ -1,13 +1,16 @@
-import { Badge, Box, Button, Divider, Flex, Heading, HStack, Icon, Image, Text, VStack } from "@chakra-ui/react"
+import { Badge, Box, Button, Divider, Flex, Heading, HStack, Icon, Image, Text, useToast, VStack } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import { YouMakeLike } from "../../../common/YouMayLike"
 import { TbStar } from "react-icons/tb"
 import {IoChatbubblesOutline} from "react-icons/io5"
 import { AddIcon, MinusIcon } from "@chakra-ui/icons"
-import {BsSuitHeart} from "react-icons/bs"
+import {BsCart3, BsSuitHeart} from "react-icons/bs"
+import { MyButton } from "../../../common/MyButton"
 export const DetailedBracelets = () => {
     const [data, setData] = useState()
+    const toast = useToast()
+    const wishlist = useToast()
     const param = useParams()
     useEffect(() => {
         fetch(`https://muffi-server.herokuapp.com/bracelets/${param.bracelets_id}`)
@@ -35,14 +38,29 @@ export const DetailedBracelets = () => {
            })
         }
     }
-    const AddToCart = () => {
+    const AddToCart = (name) => {
+         toast({
+          title: 'Added to cart',
+          description: name,
+          status: 'success',
+          duration: 7000,
+          isClosable: true,
+        })
         fetch("https://muffi-server.herokuapp.com/cart", {
             method: "POST",
             body: JSON.stringify(data),
             headers:{"Content-Type":"application/json"}
         })
+        
     }
-    const AddToWishList = () => {
+    const AddToWishList = (name) => {
+        wishlist({
+          title: 'Added to wishlist',
+          description: name,
+          status: 'success',
+          duration: 4000,
+          isClosable: true,
+        })
         fetch("https://muffi-server.herokuapp.com/wishlist", {
             method: "POST",
             body: JSON.stringify(data),
@@ -69,7 +87,7 @@ export const DetailedBracelets = () => {
                     </Flex>
                 </Box>
                 <Box p="1rem"pr="0" pos="sticky" top="0" h="600px" w="35%">
-                    <Box  >
+                     <Box  >
                         <Text fontSize={"xs"}>LOVODA</Text>
                         <Heading mb="1rem" fontWeight={"sm"}>{data?.name}</Heading>
                         <Flex alignItems={"center"}>
@@ -95,9 +113,10 @@ export const DetailedBracelets = () => {
 
                             </Flex>
                         </Box>  
-                        <Flex my="1.5rem" direction="column" gap="0.5rem">
-                               <Button bgColor={"white"} borderRadius="none"  _hover={{bgColor:"white"}}border="1px solid black" onClick={AddToCart}>Add to Cart</Button> 
-                               <Button bgColor={"white"} borderRadius="none" leftIcon={<Icon as={BsSuitHeart}></Icon>} _hover={{bgColor:"white"}} border="1px solid black" onClick={AddToWishList}>Add to WishList</Button> 
+                            <Flex my="1.5rem" direction="column" gap="0.5rem">
+                                <MyButton name={data?.name} func={AddToCart} task="Add to cart" icon={BsCart3} />
+                                <MyButton name={data?.name} func={AddToWishList} task="Add to wishlist" icon={BsSuitHeart} />
+
                                <Button bgColor={"black"} color="white" _hover={{bgColor:"black"}} borderRadius="none" border="1px solid black" onClick={AddToBuyNow}>Buy it Now</Button> 
 
                         </Flex>

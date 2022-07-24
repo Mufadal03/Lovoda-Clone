@@ -7,13 +7,14 @@ import {IoChatbubblesOutline} from "react-icons/io5"
 import { AddIcon, MinusIcon } from "@chakra-ui/icons"
 import {BsCart3, BsSuitHeart} from "react-icons/bs"
 import { MyButton } from "../../../common/MyButton"
-export const DetailedNecklaces = () => {
+export const DetailedHome = () => {
     const [data, setData] = useState()
     const toast = useToast()
     const wishlist = useToast()
+
     const param = useParams()
     useEffect(() => {
-        fetch(`https://muffi-server.herokuapp.com/necklaces/${param.necklaces_id}`)
+        fetch(`https://muffi-server.herokuapp.com/homepage/${param.homepage_id}`)
             .then((res) => res.json())
             .then((res) => {
             setData(res)
@@ -38,12 +39,12 @@ export const DetailedNecklaces = () => {
            })
         }
     }
-     const AddToCart = (name) => {
-         toast({
+    const AddToCart = (name) => {
+        toast({
           title: 'Added to cart',
           description: name,
           status: 'success',
-          duration: 4000,
+          duration: 7000,
           isClosable: true,
         })
         fetch("https://muffi-server.herokuapp.com/cart", {
@@ -51,7 +52,6 @@ export const DetailedNecklaces = () => {
             body: JSON.stringify(data),
             headers:{"Content-Type":"application/json"}
         })
-        
     }
     const AddToWishList = (name) => {
         wishlist({
@@ -116,6 +116,7 @@ export const DetailedNecklaces = () => {
                         <Flex my="1.5rem" direction="column" gap="0.5rem">
                                <MyButton name={data?.name} func={AddToCart} task="Add to cart" icon={BsCart3} />
                                 <MyButton name={data?.name} func={AddToWishList} task="Add to wishlist" icon={BsSuitHeart} />
+
                                <Button bgColor={"black"} color="white" _hover={{bgColor:"black"}} borderRadius="none" border="1px solid black" onClick={AddToBuyNow}>Buy it Now</Button> 
 
                         </Flex>
