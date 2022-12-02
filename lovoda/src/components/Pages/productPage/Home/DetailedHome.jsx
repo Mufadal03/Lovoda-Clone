@@ -14,7 +14,7 @@ export const DetailedHome = () => {
 
     const param = useParams()
     useEffect(() => {
-        fetch(`https://muffi-server.herokuapp.com/homepage/${param.homepage_id}`)
+        fetch(`https://json-mock-server-universal.onrender.com/homepage/${param.homepage_id}`)
             .then((res) => res.json())
             .then((res) => {
             setData(res)

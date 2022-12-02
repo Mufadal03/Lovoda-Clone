@@ -21,7 +21,7 @@ export const Cart = () => {
     }, [])
 
     const FetchMe = () => {
-        fetch("https://muffi-server.herokuapp.com/cart")
+        fetch("https://json-mock-server-universal.onrender.com/cart")
             .then((res) => res.json()) 
             .then((res) => {
                 setData(res)
@@ -33,7 +33,7 @@ export const Cart = () => {
     }
    
     const handleAdd = (id,Mydata) => {
-        fetch(`https://muffi-server.herokuapp.com/cart/${id}`, {
+        fetch(`https://json-mock-server-universal.onrender.com/cart/${id}`, {
             method: "PATCH",
             body: JSON.stringify({
                 quantity:Mydata.quantity+1
@@ -47,7 +47,7 @@ export const Cart = () => {
     
     const handleSub = (id, Mydata) => {
         if(Mydata.quantity==1)return
-     fetch(`https://muffi-server.herokuapp.com/cart/${id}`, {
+     fetch(`https://json-mock-server-universal.onrender.com/cart/${id}`, {
             method: "PATCH",
             body: JSON.stringify({
                 quantity:Mydata.quantity-1
@@ -60,7 +60,7 @@ export const Cart = () => {
     }
     const handleDelete = (id) => {
         console.log(id)
-        fetch(`https://muffi-server.herokuapp.com/cart/${id}`, {
+        fetch(`https://json-mock-server-universal.onrender.com/cart/${id}`, {
             method: "DELETE",
             headers:{"Content-type":"application/json"}
         }).then(()=>{

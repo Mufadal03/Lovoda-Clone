@@ -15,7 +15,7 @@ export const Bracelets = () => {
     const [less,setLess] = useState(50)
     useEffect(() => {
         setLoading(true)
-        fetch(`https://muffi-server.herokuapp.com/bracelets?_page=${page}&_limit=16&_sort=${sort}&_order=${order}&price_gte=${greater}&price_lte=${less}`)
+        fetch(`https://json-mock-server-universal.onrender.com/bracelets?_page=${page}&_limit=16&_sort=${sort}&_order=${order}&price_gte=${greater}&price_lte=${less}`)
             .then((res) => res.json())
             .then((res)=>{
                 setData(res)

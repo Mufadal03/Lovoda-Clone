@@ -42,7 +42,7 @@ export const SignUp = () => {
         //     }
         // })
         setLoading(true)
-        fetch("https://muffi-server.herokuapp.com/signup", {
+        fetch("https://json-mock-server-universal.onrender.com/signup", {
             method: "POST",
             body: JSON.stringify(form),
             headers:{"Content-Type" :"application/json"}

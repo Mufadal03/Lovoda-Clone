@@ -27,7 +27,7 @@ export const Info = () => {
         )
     }
     const handleSubmit = () => {
-        fetch("https://muffi-server.herokuapp.com/cartInfo", {
+        fetch("https://json-mock-server-universal.onrender.com/cartInfo", {
             method: "POST",
             body: JSON.stringify(form),
             headers:{"Content-type":"application/json"}

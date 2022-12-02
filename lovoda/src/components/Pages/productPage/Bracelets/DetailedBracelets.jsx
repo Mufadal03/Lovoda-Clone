@@ -13,7 +13,7 @@ export const DetailedBracelets = () => {
     const wishlist = useToast()
     const param = useParams()
     useEffect(() => {
-        fetch(`https://muffi-server.herokuapp.com/bracelets/${param.bracelets_id}`)
+        fetch(`https://json-mock-server-universal.onrender.com/bracelets/${param.bracelets_id}`)
             .then((res) => res.json())
             .then((res) => {
             setData(res)
@@ -46,7 +46,7 @@ export const DetailedBracelets = () => {
           duration: 7000,
           isClosable: true,
         })
-        fetch("https://muffi-server.herokuapp.com/cart", {
+        fetch("https://json-mock-server-universal.onrender.com/cart", {
             method: "POST",
             body: JSON.stringify(data),
             headers:{"Content-Type":"application/json"}
@@ -61,14 +61,14 @@ export const DetailedBracelets = () => {
           duration: 4000,
           isClosable: true,
         })
-        fetch("https://muffi-server.herokuapp.com/wishlist", {
+        fetch("https://json-mock-server-universal.onrender.com/wishlist", {
             method: "POST",
             body: JSON.stringify(data),
             headers:{"Content-Type":"application/json"}
         })
     }
     const AddToBuyNow = () => {
-        fetch("https://muffi-server.herokuapp.com/buynow", {
+        fetch("https://json-mock-server-universal.onrender.com/buynow", {
             method: "POST",
             body: JSON.stringify(data),
             headers:{"Content-Type":"application/json"}

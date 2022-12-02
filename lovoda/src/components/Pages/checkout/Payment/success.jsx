@@ -6,7 +6,7 @@ export const Success = () => {
     const [data, setData] = useState()
     const [len, setLen] = useState()
     useEffect(() => {
-        fetch("https://muffi-server.herokuapp.com/cartInfo")   
+        fetch("https://json-mock-server-universal.onrender.com/cartInfo")   
             .then((res) => res.json())
             .then((res) => {
                 setData(res)

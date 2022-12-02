@@ -13,7 +13,7 @@ export const Login = () => {
     const [data, setData] = useState()
     const [login,setLogin] = useState({email:"",password:""})
     useEffect(() => {
-        fetch("https://muffi-server.herokuapp.com/signup")
+        fetch("https://json-mock-server-universal.onrender.com/signup")
             .then((res) => res.json())
             .then((res) => {
                 console.log(res)

@@ -9,7 +9,7 @@ export const Homepage = () => {
     const [isLoading,setLoading] = useState(false)
     useEffect(() => {
         setLoading(true)
-        fetch("https://muffi-server.herokuapp.com/homepage")
+        fetch("https://json-mock-server-universal.onrender.com/homepage")
             .then((res) => res.json())
             .then((res) => {
                 // console.log(res)
