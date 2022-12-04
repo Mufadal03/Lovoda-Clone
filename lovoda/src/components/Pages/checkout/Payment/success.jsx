@@ -6,7 +6,7 @@ export const Success = () => {
     const [data, setData] = useState()
     const [len, setLen] = useState()
     useEffect(() => {
-        fetch("https://json-mock-server-universal.onrender.com/cartInfo")   
+        fetch("https://json-mock-vercel-alpha.vercel.app/cartInfo")   
             .then((res) => res.json())
             .then((res) => {
                 setData(res)

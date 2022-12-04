@@ -16,7 +16,7 @@ export const SideBar = ({show}) => {
          setTotal(Number(my))
     }   
     useEffect(() => {
-        fetch(`https://muffi-server.herokuapp.com/cart`)
+        fetch(`https://json-mock-vercel-alpha.vercel.app/cart`)
             .then((res) => res.json())
             .then((res) => {
                 setData(res)
@@ -33,7 +33,7 @@ export const SideBar = ({show}) => {
     }
       useEffect(() => {
         // DeleteCart()call to delete tested example
-        fetch("https://muffi-server.herokuapp.com/cartInfo")  
+        fetch("https://json-mock-vercel-alpha.vercel.app/cartInfo")  
             .then((res) => res.json())
             .then((res) => {
                 console.log(res)

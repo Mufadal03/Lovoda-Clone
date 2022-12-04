@@ -18,7 +18,7 @@ export const Payment = () => {
     }
     const show = true
     useEffect(() => {
-        fetch("https://json-mock-server-universal.onrender.com/cartInfo")   
+        fetch("https://json-mock-vercel-alpha.vercel.app/cartInfo")   
             .then((res) => res.json())
             .then((res) => {
                 setData(res)

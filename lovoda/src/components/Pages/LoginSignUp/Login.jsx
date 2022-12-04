@@ -13,7 +13,7 @@ export const Login = () => {
     const [data, setData] = useState()
     const [login,setLogin] = useState({email:"",password:""})
     useEffect(() => {
-        fetch("https://json-mock-server-universal.onrender.com/signup")
+        fetch("https://json-mock-vercel-alpha.vercel.app/signup")
             .then((res) => res.json())
             .then((res) => {
                 console.log(res)

@@ -24,7 +24,7 @@ export const Shipping = () => {
     }
     useEffect(() => {
         // DeleteCart()call to delete tested example
-        fetch("https://muffi-server.herokuapp.com/cartInfo")  
+        fetch("https://json-mock-vercel-alpha.vercel.app/cartInfo")  
             .then((res) => res.json())
             .then((res) => {
                 console.log(res)
@@ -33,7 +33,7 @@ export const Shipping = () => {
         })
     }, [load])
     const handleSubmit = () => {
-        fetch(`https://muffi-server.herokuapp.com/cartInfo/${len}`, {
+        fetch(`https://json-mock-vercel-alpha.vercel.app/cartInfo/${len}`, {
             method: "PATCH",
             body: JSON.stringify({
                 method: method,

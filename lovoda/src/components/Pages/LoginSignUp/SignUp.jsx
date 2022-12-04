@@ -42,7 +42,7 @@ export const SignUp = () => {
         //     }
         // })
         setLoading(true)
-        fetch("https://json-mock-server-universal.onrender.com/signup", {
+        fetch("https://json-mock-vercel-alpha.vercel.app/signup", {
             method: "POST",
             body: JSON.stringify(form),
             headers:{"Content-Type" :"application/json"}

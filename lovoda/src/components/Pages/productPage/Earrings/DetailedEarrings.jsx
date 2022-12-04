@@ -13,7 +13,7 @@ export const DetailedEarrings = () => {
     const toast = useToast()
     const wishlist = useToast()
     useEffect(() => {
-        fetch(`https://json-mock-server-universal.onrender.com/earrings/${param.earrings_id}`)
+        fetch(`https://json-mock-vercel-alpha.vercel.app/earrings/${param.earrings_id}`)
             .then((res) => res.json())
             .then((res) => {
             setData(res)
@@ -46,7 +46,7 @@ export const DetailedEarrings = () => {
           duration: 7000,
           isClosable: true,
         })
-        fetch("https://json-mock-server-universal.onrender.com//cart", {
+        fetch("https://json-mock-vercel-alpha.vercel.app/cart", {
             method: "POST",
             body: JSON.stringify(data),
             headers:{"Content-Type":"application/json"}
@@ -60,14 +60,14 @@ export const DetailedEarrings = () => {
           duration: 4000,
           isClosable: true,
         })
-        fetch("https://json-mock-server-universal.onrender.com//wishlist", {
+        fetch("https://json-mock-vercel-alpha.vercel.app/wishlist", {
             method: "POST",
             body: JSON.stringify(data),
             headers:{"Content-Type":"application/json"}
         })
     }
     const AddToBuyNow = () => {
-        fetch("https://json-mock-server-universal.onrender.com//buynow", {
+        fetch("https://json-mock-vercel-alpha.vercel.app/buynow", {
             method: "POST",
             body: JSON.stringify(data),
             headers:{"Content-Type":"application/json"}

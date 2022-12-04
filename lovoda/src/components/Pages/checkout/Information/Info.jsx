@@ -27,7 +27,7 @@ export const Info = () => {
         )
     }
     const handleSubmit = () => {
-        fetch("https://json-mock-server-universal.onrender.com/cartInfo", {
+        fetch("https://json-mock-vercel-alpha.vercel.app/cartInfo", {
             method: "POST",
             body: JSON.stringify(form),
             headers:{"Content-type":"application/json"}
